@@ -102,22 +102,10 @@ async function main() {
   }
   
   console.log('='.repeat(60));
-  console.log('\n💾 Save these addresses for your configuration!\n');
+  console.log('\n💾 Copy these addresses for your configuration!\n');
 
-  // Save to file
-  const fs = require('fs');
-  const deploymentData = {
-    network: network.name,
-    chainId: network.chainId.toString(),
-    deployer: deployer.address,
-    timestamp: new Date().toISOString(),
-    contracts: deployedContracts,
-  };
-
-  const filename = `deployments/deployment-${network.chainId}-${Date.now()}.json`;
-  fs.mkdirSync('deployments', { recursive: true });
-  fs.writeFileSync(filename, JSON.stringify(deploymentData, null, 2));
-  console.log(`📄 Deployment data saved to: ${filename}\n`);
+  // TODO: Save deployment data to file (requires fs module)
+  // For now, addresses are logged to console
 
   // Verify instructions
   console.log('🔍 To verify contracts on block explorer:');

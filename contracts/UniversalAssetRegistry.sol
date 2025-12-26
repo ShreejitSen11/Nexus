@@ -145,11 +145,16 @@ contract UniversalAssetRegistry is Ownable, ReentrancyGuard, Pausable {
         if (!assets[assetId].isActive) return false;
         
         GamePermissions memory perms = gamePermissions[assetId][gameAddress];
+        
+        // Blacklisted games cannot use the asset
         if (perms.isBlacklisted) return false;
         
-        // If whitelist is set, require whitelist permission
-        // If no whitelist is configured, allow by default
-        return perms.isWhitelisted;
+        // If game is explicitly whitelisted, allow
+        if (perms.isWhitelisted) return true;
+        
+        // By default, allow all games (open access model)
+        // Asset creators can restrict by whitelisting specific games
+        return true;
     }
     
     /**

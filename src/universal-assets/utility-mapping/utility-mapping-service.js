@@ -72,9 +72,10 @@ class UtilityMappingService {
    */
   getAllUtilities(assetId) {
     const utilities = [];
+    const prefix = `${assetId}_`;
     
     for (const [key, value] of this.utilityMappings.entries()) {
-      if (key.startsWith(assetId)) {
+      if (key.startsWith(prefix)) {
         utilities.push(value);
       }
     }

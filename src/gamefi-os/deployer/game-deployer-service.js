@@ -104,17 +104,18 @@ class GameDeployerService {
   async deployContract(contractType, params, chain) {
     const { name, symbol, config } = params;
 
-    // Mock contract deployment (in production, this would use actual ABIs and bytecode)
+    // NOTE: This is a mock deployment for demonstration purposes
+    // In production, this would use actual contract ABIs and bytecode:
+    // const contract = await blockchainService.deployContract(abi, bytecode, args, chain);
+    
     try {
-      // Simulate deployment
+      // Generate mock contract address for demo
       const mockAddress = `0x${Buffer.from(`${contractType}-${name}-${Date.now()}`).toString('hex').slice(0, 40)}`;
       const mockTxHash = `0x${Buffer.from(`tx-${Date.now()}`).toString('hex')}`;
 
-      console.log(`Deploying ${contractType} on ${chain}...`);
+      console.log(`[DEMO] Deploying ${contractType} on ${chain}...`);
+      console.log(`[DEMO] In production, this would deploy actual contracts`);
       
-      // In production, this would be:
-      // const contract = await blockchainService.deployContract(abi, bytecode, args, chain);
-
       return {
         address: mockAddress,
         txHash: mockTxHash,

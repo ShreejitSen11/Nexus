@@ -153,8 +153,8 @@ class BlockchainService {
    * Get past events
    */
   async getPastEvents(contract, eventName, fromBlock, toBlock) {
-    // Validate event exists as a function
-    if (typeof contract.filters[eventName] !== 'function') {
+    // Validate event filter exists
+    if (!contract.filters || !contract.filters[eventName]) {
       throw new Error(`Event '${eventName}' not found in contract`);
     }
     
