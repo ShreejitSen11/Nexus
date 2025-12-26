@@ -1,5 +1,7 @@
-require("@nomicfoundation/hardhat-toolbox");
-require("dotenv").config();
+import '@nomicfoundation/hardhat-toolbox';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const config = {
   solidity: {
@@ -44,4 +46,4 @@ const config = {
   },
 };
 
-module.exports = config;
+export default config;
